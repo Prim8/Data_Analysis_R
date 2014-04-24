@@ -1,6 +1,11 @@
 Human Activity Recognition Using Smartphones Dataset
 ===
 
+*Important Note*:
+
+Click on the following link for a properly **rendered HTML** version of [Smartphone_munging.html](http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Smartphone_study/Smartphone_munging.html)
+
+
 Goal
 ---
 The goal of this study is to manipulate a set of data files (located under folder "Data") and reshape the data into a "clean and tidy" format that can be used to perform further analyses (see "sensor.data.txt"). I provide a brief summary of the experiment and data used for the study below. Detailed explanation is provided in the "Data" folder. 
