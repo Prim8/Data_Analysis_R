@@ -1,7 +1,6 @@
 ## Rendered version of the html file
 
-Click below for a rendered version of the analysis:
-[Activity_monitoring.html](http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_monitoring/Activity_monitoring.html)
+Click  [Activity_monitoring.html](http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_monitoring/Activity_monitoring.html) for a rendered version of the analysis:
 
 ## Description of the project
 
