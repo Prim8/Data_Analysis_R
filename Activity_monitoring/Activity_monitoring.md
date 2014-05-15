@@ -134,7 +134,7 @@ median(daily.steps$total.steps)
 
 
 ## What is the average daily activity pattern?
-### 1. Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+### 1. Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
 
 ```r
@@ -191,7 +191,7 @@ mean.steps.by.interval[which.max(mean.steps.by.interval$mean.steps), ]
 
 
 ## Imputing missing values
-### 1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
+### 1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows)
 
 
 ```r
@@ -203,7 +203,7 @@ nrow(df[!complete.cases(df), ])
 ```
 
 
-### 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
+### 2. Devise a strategy for filling in all of the missing values in the dataset. Use the mean or median for that day, or the mean for that 5-minute interval.
 > I choose to fill in all of the missing values with the mean of the 5-minute interval, which I computed above and stored in the "mean.steps.by.interval" dataframe. My procedure is to create two subsets of the main dataframe (i.e. df), one with missing values, the other one without missing values. Then, I replace the missing values (in the dataframe that contains all missing values) with the mean for the 5-minute interval. Finally, I concatenate both subsets of df to create a new dataframe (df.complete) with the missing values properly replaced (see 3.).
 
 
@@ -328,6 +328,28 @@ head(daily.steps.complete)
 ## 6 2012-10-06       15420
 ```
 
+
+
+```r
+## Mean total number of steps taken per day
+mean(daily.steps.complete$total.steps)
+```
+
+```
+## [1] 10766
+```
+
+```r
+
+## Median total number of steps taken per day
+median(daily.steps.complete$total.steps)
+```
+
+```
+## [1] 10766
+```
+
+
 > To answer to the above question,let's visualize the two histograms side by side. The left plot represents the histogram of the total number of steps taken each day with the missing values (same histogram as the one in the first part of the project). The right plot is the histogram of the total number of steps taken each day without the missing values. Note that I re-scaled both histograms to be on the same y-axis range for better comparison.
 
 
@@ -354,9 +376,9 @@ ggplot(daily.steps.complete, aes(total.steps)) + geom_histogram() + scale_y_cont
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-91.png) ![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-92.png) 
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-101.png) ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-102.png) 
 
-> The shape of both histograms is roughtly similar. However, the range values for the count differs. It varies between 0 and about 9 for the histogram with missing values (i.e. left plot), whereas the count values for the histogram without missing values (right plot) vary between 0 and about 12. It is also worth noticing that the maximum values differ, and correspond to 9 and 12 for the left and right histograms, respectively. Moreover, the total number of steps reaches its maximum 10,000 steps for the left plot, but is approaximately at 11,000 steps for the right plot. Therefore , imputing missing data on the estimates of the total daily number of steps impacts counts as well as maximum values in this specific case.  
+> The shape of both histograms is roughly similar. However, the range values for the count differs. It varies between 0 and about 9 for the histogram with missing values (i.e. left plot), whereas the count values for the histogram without missing values (right plot) vary between 0 and about 12. The histograms show differences between counts of maximum values. They correspond to 9 and 12 for the left and right histograms, respectively. However, calcluations of mean and median for the dataset without missing values indicates that they are not diffeerent from the mean and median from the dataset with missing values (~ 10,766). Therefore, imputing missing data on the estimates of the total daily number of steps mainly impacts counts and maximum values but does not impact maximum and median values in this specific case.  
 
 ## Are there differences in activity patterns between weekdays and weekends?
 ### 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
@@ -410,7 +432,7 @@ str(df.complete)
 ```
 
 
-### 2. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
+### 2. Make a panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). 
 
 
 ```r
@@ -521,6 +543,6 @@ ggplot(panel.data, aes(interval, mean.steps)) + geom_line(aes(group = 1)) +
     labs(title = "Time series plot of the 5-minute interval \n and the average number of steps taken, \n averaged across all weekday days or weekend days")
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
 
 
