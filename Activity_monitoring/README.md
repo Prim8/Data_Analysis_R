@@ -1,6 +1,8 @@
 ## Rendered version of the html file
 
-Click  [Activity_monitoring.html](http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_monitoring/Activity_monitoring.html) for a rendered version of the analysis:
+Click 
+<a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_monitoring/Activity_monitoring.html" target="_blank">Activity_monitoring.html</a> 
+for a rendered version of the analysis:
 
 ## Description of the project
 
@@ -11,7 +13,9 @@ This project makes use of data collected from an anonymous individual who used a
 3. **interval**: Identifier for the 5-minute interval in which measurement wastaken
 
 
-This project was conducted in multiple parts. The [Activity_monitoring.html](http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_monitoring/Activity_monitoring.html) documents in details the steps taken to conduct this study. The "figure" folder contains the plots used for this study. 
+This project was conducted in multiple parts. The
+<a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_monitoring/Activity_monitoring.html" target="_blank">Activity_monitoring.html</a>
+documents in details the steps taken to conduct this study. The "figure" folder contains the plots used for this study. 
 
 The steps taken for this study are the following:
 

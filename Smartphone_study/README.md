@@ -3,7 +3,8 @@ Human Activity Recognition Using Smartphones Dataset
 
 *Important Note*:
 
-Click on the following link for a properly **rendered HTML** version of [Smartphone_munging.html](http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Smartphone_study/Smartphone_munging.html)
+Click on the following link for a properly **rendered HTML** version of
+<a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Smartphone_study/Smartphone_munging.html" target="_blank">Smartphone_munging.html</a>
 
 
 Goal

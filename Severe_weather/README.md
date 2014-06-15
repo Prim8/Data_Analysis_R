@@ -1,6 +1,8 @@
 ## Rendered version of the html file
 
-Click [Severe_weather.html](http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Severe_weather/SevereWeather.html) for a rendered version of the analysis:
+Click
+<a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Severe_weather/SevereWeather.html" target="_blank">Severe_weather.html</a>
+for a rendered version of the analysis:
 
 ## Description of the project
 
@@ -12,7 +14,8 @@ The data comes in the form of a comma-separated-value file compressed via the bz
 
 The dataset includes a total of 37 variables and 902,297 entries. 
 
-Complete documentation for the data can be found [here](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf).
+Complete documentation for the data can be found
+<a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf" target="_blank">here</a>.
 
 The purpose of this project is to address the following questions: 
 
@@ -20,5 +23,7 @@ The purpose of this project is to address the following questions:
 
 2. Across the United States, which types of events have the greatest economic consequences?
 
-Detailed steps are presented in the [Severe_weather.html](http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Severe_weather/SevereWeather.html)  document.
+Detailed steps are presented in the
+<a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Severe_weather/SevereWeather.html" target="_blank">Severe_weather.html</a>
+document.
 

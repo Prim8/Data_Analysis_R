@@ -7,7 +7,7 @@ The goal of this work was to write functions that sort throught a dataset and de
 # Description of the data set
 ===
 
-* one .csv file ("outcome-of-care-measures.csv" including 4706 records of 46 variables) or medicare records from the the U.S. Department of Health and Human Services. The dataset (available  [here](http://www.medicare.gov/hospitalcompare/search.html?AspxAutoDetectCookieSupport=1)) contains information such as mortality and readmission rates for heart attack, heart failure, or pneumonia for over 4,000 hospitals in the US.
+* one .csv file ("outcome-of-care-measures.csv" including 4706 records of 46 variables) or medicare records from the the U.S. Department of Health and Human Services. The dataset (available <a href="http://www.medicare.gov/hospitalcompare/search.html?AspxAutoDetectCookieSupport=1" target="_blank">here</a>) contains information such as mortality and readmission rates for heart attack, heart failure, or pneumonia for over 4,000 hospitals in the US.
  
 
 # Functions
