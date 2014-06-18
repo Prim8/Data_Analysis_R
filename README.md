@@ -8,6 +8,8 @@ Each project is in a folder, along with a README file to briefly explain the nat
 
 <a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_monitoring/Activity_monitoring.html" target="_blank">Activity_monitoring.html</a>
 
+<a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_recognition_RandomForest/Weight_lifting.html" target="_blank">Activity_recognition_RandomForest</a>
+
 <a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Severe_weather/SevereWeather.html" target="_blank">Severe_weather.html</a>
 
 <a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Smartphone_study/Smartphone_munging.html" target="_blank">Smartphone_munging.html</a>

@@ -2,8 +2,8 @@ Weight lifting: predicting how "well" an activity was performed
 ========================================================
 
 Click 
-<a href="" target="_blank">here</a>
-for a endered version of the html document.
+<a href="http://htmlpreview.github.io/?https://github.com/Prim8/Data_Analysis_R/blob/master/Activity_recognition_RandomForest/Weight_lifting.html" target="_blank">here</a>
+for a rendered version of the html document.
 
 ```
 Six young health participants were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different fashions ("classe" variable): 
