@@ -1,3 +1,17 @@
+## Brief description
+```
+This project makes use of data collected from an anonymous individual who used a personal activity monitoring device to record the number of steps taken in 5-minute intervals each day.
+
+The goal of this analysis is to answer to the following questions:
+1. What is the mean total number of steps taken per day?
+2. What is the average daily activity pattern?
+3. How to impute missing values?
+4. Are there differences in activity patterns between weekdays and weekends?
+
+A full descrition of the project is available here:
+https://github.com/Prim8/Data_Analysis_R/tree/master/Activity_monitoring
+```
+
 ## Loading and preprocessing the data
 ```{r echo=TRUE}
 df <- read.csv(unz("activity.zip", "activity.csv"))

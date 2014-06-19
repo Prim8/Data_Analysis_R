@@ -1,3 +1,17 @@
+## Brief description
+```
+This project makes use of data collected from an anonymous individual who used a personal activity monitoring device to record the number of steps taken in 5-minute intervals each day.
+
+The goal of this analysis is to answer to the following questions:
+1. What is the mean total number of steps taken per day?
+2. What is the average daily activity pattern?
+3. How to impute missing values?
+4. Are there differences in activity patterns between weekdays and weekends?
+
+A full descrition of the project is available here:
+https://github.com/Prim8/Data_Analysis_R/tree/master/Activity_monitoring
+```
+
 ## Loading and preprocessing the data
 
 ```r
@@ -21,8 +35,7 @@ str(df)
 ```
 
 ```r
-
-# transform the column 'date' to a date class format
+# transform the column "date" to a date class format
 df$date <- as.Date(df$date)
 summary(df)
 ```
@@ -51,7 +64,6 @@ head(df)
 ## 5    NA 2012-10-01       20
 ## 6    NA 2012-10-01       25
 ```
-
 
 ## What is mean total number of steps taken per day?
 ### 1. Make a histogram of the total number of steps taken each day
@@ -97,10 +109,11 @@ head(daily.steps)
 ```
 
 ```r
-
 # plot the data
 library(ggplot2)
-ggplot(daily.steps, aes(total.steps)) + geom_histogram() + labs(x = "total number of steps") + 
+ggplot(daily.steps, aes(total.steps)) +
+    geom_histogram() +
+    labs(x = "total number of steps") +
     labs(title = "Total number of steps taken per day")
 ```
 
@@ -109,7 +122,6 @@ ggplot(daily.steps, aes(total.steps)) + geom_histogram() + labs(x = "total numbe
 ```
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
-
 
 ### 2. Calculate and report the mean and median total number of steps taken per day
 
@@ -123,7 +135,6 @@ mean(daily.steps$total.steps)
 ```
 
 ```r
-
 ## Median total number of steps taken per day
 median(daily.steps$total.steps)
 ```
@@ -132,15 +143,13 @@ median(daily.steps$total.steps)
 ## [1] 10765
 ```
 
-
 ## What is the average daily activity pattern?
 ### 1. Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
 
 ```r
 # prepare the data
-mean.steps.by.interval <- as.data.frame.table(tapply(df$steps, df$interval, 
-    mean, na.rm = TRUE))
+mean.steps.by.interval <- as.data.frame.table(tapply(df$steps, df$interval, mean, na.rm=TRUE))
 colnames(mean.steps.by.interval) <- c("interval", "mean.steps")
 dim(mean.steps.by.interval)
 ```
@@ -164,16 +173,16 @@ head(mean.steps.by.interval)
 ```
 
 ```r
-
 # plot the data
-ggplot(mean.steps.by.interval, aes(interval, mean.steps)) + geom_line(aes(group = 1)) + 
-    scale_x_discrete(breaks = seq(0, 2355, by = 300), labels = c("00:00", "03:00", 
-        "06:00", "09:00", "12:00", "15:00", "18:00", "21:00")) + labs(x = "interval") + 
-    labs(y = "average number of steps") + labs(title = "Time series plot of the 5-minute interval\n and the average number of steps taken,\n averaged accross all days")
+ggplot(mean.steps.by.interval, aes(interval, mean.steps)) +
+    geom_line(aes(group=1)) + 
+    scale_x_discrete(breaks=seq(0, 2355, by=300), labels=c("00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00")) + 
+    labs(x = "interval") +
+    labs(y = "average number of steps") +
+    labs(title = "Time series plot of the 5-minute interval\n and the average number of steps taken,\n averaged accross all days")
 ```
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
-
 
 ### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 The above graph suggests that, on average, the 5-minute interval that contains the maximum number of steps is somewhere around 850 with an average number of steps of slightly above 200.
@@ -189,7 +198,6 @@ mean.steps.by.interval[which.max(mean.steps.by.interval$mean.steps), ]
 ## 104      835      206.2
 ```
 
-
 ## Imputing missing values
 ### 1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows)
 
@@ -202,14 +210,13 @@ nrow(df[!complete.cases(df), ])
 ## [1] 2304
 ```
 
-
 ### 2. Devise a strategy for filling in all of the missing values in the dataset. Use the mean or median for that day, or the mean for that 5-minute interval.
 > I choose to fill in all of the missing values with the mean of the 5-minute interval, which I computed above and stored in the "mean.steps.by.interval" dataframe. My procedure is to create two subsets of the main dataframe (i.e. df), one with missing values, the other one without missing values. Then, I replace the missing values (in the dataframe that contains all missing values) with the mean for the 5-minute interval. Finally, I concatenate both subsets of df to create a new dataframe (df.complete) with the missing values properly replaced (see 3.).
 
 
 ```r
 # subset of df without missing values
-df.complete <- df[complete.cases(df), ]
+df.complete <- df[complete.cases(df), ] 
 dim(df.complete)
 ```
 
@@ -218,7 +225,7 @@ dim(df.complete)
 ```
 
 ```r
-nrow(df.complete[!complete.cases(df.complete), ])  # check that there are zero rows with missing values
+nrow(df.complete[!complete.cases(df.complete), ]) # check that there are zero rows with missing values
 ```
 
 ```
@@ -226,8 +233,7 @@ nrow(df.complete[!complete.cases(df.complete), ])  # check that there are zero r
 ```
 
 ```r
-
-# subset of df with missing values
+#subset of df with missing values
 df.miss.val <- df[!complete.cases(df), ]
 dim(df.miss.val)
 ```
@@ -237,7 +243,7 @@ dim(df.miss.val)
 ```
 
 ```r
-nrow(df.miss.val[!complete.cases(df.miss.val), ])  # check all of the rows have missing values
+nrow(df.miss.val[!complete.cases(df.miss.val), ]) # check all of the rows have missing values
 ```
 
 ```
@@ -245,9 +251,8 @@ nrow(df.miss.val[!complete.cases(df.miss.val), ])  # check all of the rows have 
 ```
 
 ```r
-
 # replace missing values by the mean for th e5-minute interval
-merged <- merge(df.miss.val, mean.steps.by.interval, by.x = "interval")
+merged <- merge(df.miss.val, mean.steps.by.interval, by.x = "interval") 
 merged <- merged[, c(4, 3, 1)]
 colnames(merged) <- c("steps", "date", "interval")
 head(merged)
@@ -263,7 +268,6 @@ head(merged)
 ## 6 1.717 2012-11-10        0
 ```
 
-
 ### 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```r
@@ -278,7 +282,7 @@ dim(df.complete)
 ```
 
 ```r
-nrow(df.complete[!complete.cases(df.complete), ])  # check that there are no missing values
+nrow(df.complete[!complete.cases(df.complete), ]) # check that there are no missing values
 ```
 
 ```
@@ -299,13 +303,11 @@ head(df.complete)
 ## 294     0 2012-10-02       25
 ```
 
-
 ### 4. Make a histogram of the total number of steps taken each day. Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 ```r
 # prepare the data
-daily.steps.complete <- as.data.frame.table(tapply(df.complete$steps, df.complete$date, 
-    sum))
+daily.steps.complete <- as.data.frame.table(tapply(df.complete$steps, df.complete$date, sum))
 colnames(daily.steps.complete) <- c("date", "total.steps")
 dim(daily.steps.complete)
 ```
@@ -329,7 +331,6 @@ head(daily.steps.complete)
 ```
 
 
-
 ```r
 ## Mean total number of steps taken per day
 mean(daily.steps.complete$total.steps)
@@ -340,7 +341,6 @@ mean(daily.steps.complete$total.steps)
 ```
 
 ```r
-
 ## Median total number of steps taken per day
 median(daily.steps.complete$total.steps)
 ```
@@ -349,15 +349,17 @@ median(daily.steps.complete$total.steps)
 ## [1] 10766
 ```
 
-
 > To answer to the above question,let's visualize the two histograms side by side. The left plot represents the histogram of the total number of steps taken each day with the missing values (same histogram as the one in the first part of the project). The right plot is the histogram of the total number of steps taken each day without the missing values. Note that I re-scaled both histograms to be on the same y-axis range for better comparison.
 
 
 ```r
 # plot the data - with missing values
 library(ggplot2)
-ggplot(daily.steps, aes(total.steps)) + geom_histogram() + scale_y_continuous(limits = c(0, 
-    12.5)) + labs(x = "total number of steps") + labs(title = "Total number of steps taken per day \n WITH MISSING VALUES")
+ggplot(daily.steps, aes(total.steps)) +
+    geom_histogram() +
+    scale_y_continuous(limits = c(0, 12.5)) +
+    labs(x = "total number of steps") +
+    labs(title = "Total number of steps taken per day \n WITH MISSING VALUES")
 ```
 
 ```
@@ -365,11 +367,13 @@ ggplot(daily.steps, aes(total.steps)) + geom_histogram() + scale_y_continuous(li
 ```
 
 ```r
-
 # plot the data - without missing values
 library(ggplot2)
-ggplot(daily.steps.complete, aes(total.steps)) + geom_histogram() + scale_y_continuous(limits = c(0, 
-    12.5)) + labs(x = "total number of steps") + labs(title = "Total number of steps taken per day \n NO MISSING VALUES")
+ggplot(daily.steps.complete, aes(total.steps)) +
+    geom_histogram() +
+    scale_y_continuous(limits = c(0, 12.5)) +
+    labs(x = "total number of steps") +
+    labs(title = "Total number of steps taken per day \n NO MISSING VALUES")
 ```
 
 ```
@@ -377,14 +381,13 @@ ggplot(daily.steps.complete, aes(total.steps)) + geom_histogram() + scale_y_cont
 ```
 
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-101.png) ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-102.png) 
-
 > The shape of both histograms is roughly similar. However, the range values for the count differs. It varies between 0 and about 9 for the histogram with missing values (i.e. left plot), whereas the count values for the histogram without missing values (right plot) vary between 0 and about 12. The histograms show differences between counts of maximum values. They correspond to 9 and 12 for the left and right histograms, respectively. However, calcluations of mean and median for the dataset without missing values indicates that they are not diffeerent from the mean and median from the dataset with missing values (~ 10,766). Therefore, imputing missing data on the estimates of the total daily number of steps mainly impacts counts and maximum values but does not impact maximum and median values in this specific case.  
 
 ## Are there differences in activity patterns between weekdays and weekends?
 ### 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
 ```r
-# create a 'day' column indicating the day of the week
+# create a "day" column indicating the day of the week
 df.complete$day <- as.factor(weekdays(df.complete$date))
 head(df.complete)
 ```
@@ -400,11 +403,9 @@ head(df.complete)
 ```
 
 ```r
-
-# create a 'week' column indicating weekday or weekend
-df.complete$week <- ifelse((df.complete$day == "Saturday" | df.complete$day == 
-    "Sunday"), "weekend", "weekday")
-df.complete$week <- as.factor(df.complete$week)  # create two levels
+# create a "week" column indicating weekday or weekend
+df.complete$week <- ifelse((df.complete$day == "Saturday" | df.complete$day == "Sunday"), "weekend", "weekday")
+df.complete$week <- as.factor(df.complete$week) # create two levels
 head(df.complete)
 ```
 
@@ -431,18 +432,16 @@ str(df.complete)
 ##  $ week    : Factor w/ 2 levels "weekday","weekend": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-
 ### 2. Make a panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). 
 
 
 ```r
 # subset of weekday and computation of the average number of steps taken
-weekday <- df.complete[df.complete$week == "weekday", ]
-panel.weekday <- as.data.frame.table(tapply(weekday$steps, weekday$interval, 
-    mean))
+weekday <- df.complete[df.complete$week == "weekday", ] 
+panel.weekday <- as.data.frame.table(tapply(weekday$steps, weekday$interval, mean))
 colnames(panel.weekday) <- c("interval", "mean.steps")
-# panel.weekday$interval <- as.character(panel.weekday$interval)
-panel.weekday$week <- "weekday"  # add a column
+#panel.weekday$interval <- as.character(panel.weekday$interval)
+panel.weekday$week <- "weekday" # add a column
 dim(panel.weekday)
 ```
 
@@ -465,13 +464,11 @@ head(panel.weekday)
 ```
 
 ```r
-
 # subset of weekend and computation of the average number of steps taken
-weekend <- df.complete[df.complete$week == "weekend", ]
-panel.weekend <- as.data.frame.table(tapply(weekend$steps, weekend$interval, 
-    mean))
+weekend <- df.complete[df.complete$week == "weekend", ] 
+panel.weekend <- as.data.frame.table(tapply(weekend$steps, weekend$interval, mean))
 colnames(panel.weekend) <- c("interval", "mean.steps")
-panel.weekend$week <- "weekend"  # add a column
+panel.weekend$week <- "weekend" # add a column
 dim(panel.weekend)
 ```
 
@@ -494,7 +491,6 @@ head(panel.weekend)
 ```
 
 ```r
-
 # concatenate panel.weekday and panel.weekend into one dataset
 panel.data <- rbind(panel.weekday, panel.weekend)
 panel.data$week <- as.factor(panel.data$week)
@@ -534,15 +530,15 @@ tail(panel.data)
 ```
 
 ```r
-
 # plot the data (using ggplot)
-ggplot(panel.data, aes(interval, mean.steps)) + geom_line(aes(group = 1)) + 
-    facet_wrap(~week, nrow = 2, ncol = 1) + scale_x_discrete(breaks = seq(0, 
-    2355, by = 300), labels = c("00:00", "03:00", "06:00", "09:00", "12:00", 
-    "15:00", "18:00", "21:00")) + labs(x = "interval") + labs(y = "average number of steps") + 
+ggplot(panel.data, aes(interval, mean.steps)) +
+    geom_line(aes(group=1)) + 
+    facet_wrap(~ week, nrow=2, ncol=1) +
+    scale_x_discrete(breaks = seq(0, 2355, by = 300), labels = c("00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00")) +
+    labs(x = "interval") +
+    labs(y = "average number of steps") +
     labs(title = "Time series plot of the 5-minute interval \n and the average number of steps taken, \n averaged across all weekday days or weekend days")
 ```
 
 ![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
-
 
